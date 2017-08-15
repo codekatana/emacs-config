@@ -5,6 +5,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(custom-safe-themes
+   (quote
+    ("f146cf0feba4fed38730de65e924e26140b470a4d503287e9ddcf7cca0b5b3f0" default)))
  '(display-battery-mode t)
  '(display-time-mode t)
  '(size-indication-mode t))
@@ -14,3 +17,57 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 128 :width normal)))))
+
+(load-theme 'paganini t)
+
+
+;; setup emacs for development
+
+;; Disable toolbar and menubar
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode 1)
+
+;; Remember position in opened files
+(require 'saveplace)
+(setq-default save-place t)
+
+
+;; Display line and column number in toolbar
+(setq line-number-mode t)
+(setq column-number-mode t)
+
+;; Show matching parentheses
+(show-paren-mode t)
+
+;; Display question in 'y/n' instead of 'yes/no'
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Delete selected text when typing
+(delete-selection-mode 1)
+
+;; Highlight current line
+(hl-line-mode t)
+
+(setq-default indent-tabs-mode t)
+(setq c-basic-offset 8)
+
+;; Tab width
+(setq default-tab-width 8)
+(custom-set-variables
+ '(inhibit-startup-screen t))
+
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+
+(add-hook 'prog-mode-hook 'whitespace-mode)
+
+(setq c-default-style "k&r")
+(setq-default indent-tabs-mode t)
+;; Tab width
+(setq default-tab-width 8)
+(setq c-basic-offset 8)
+
+(setq scroll-step            1
+      scroll-conservatively  10000)
